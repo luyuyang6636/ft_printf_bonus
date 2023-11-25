@@ -42,7 +42,8 @@ int	ft_print_ptr(t_flags flags, unsigned long int ptr);
 void	ft_put_ptr_left(t_flags flags, unsigned long int ptr, int length);
 void	ft_put_ptr_no_left(t_flags flags, unsigned long int ptr, int length);
 void    ft_put_ptr(unsigned long int ptr);
-int	ft_print_int(long n);
+int	ft_print_int(t_flags flags, long n);
+int	ft_print_int_body(t_flags flags, long n);
 /*void	ft_print_unsigned(unsigned int n);*/
 void	ft_put_hex(unsigned int num, const char format);
 int	ft_print_hex(unsigned int num, const char format);
@@ -52,6 +53,7 @@ void	ft_putnbr(long n);
 t_flags	ft_reset_flags(void);
 t_flags	ft_set_flags(t_flags flags, const char *format);
 int	ft_print_all(t_flags flags, va_list args);
+int ft_padding(t_flags flags, long n, int (*f)(void *));
 
 
 

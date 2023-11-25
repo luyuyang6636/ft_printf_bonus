@@ -38,6 +38,10 @@ t_flags	ft_set_flags(t_flags flags, const char *format)
 		flags.plus = 1;
 	else if (*format == '#')
 		flags.hash = 1;
+	if (flags.left)
+		flags.zero = 0;
+	if (flags.plus)
+		flags.space = 0;
 	else if (*format == '.' || (*format >= '1' && *format <='9'))
 	{
 		if (*format >= '1' && *format <='9')

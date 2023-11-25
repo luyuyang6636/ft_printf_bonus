@@ -32,17 +32,52 @@ int	ft_nbrlen(long n)
 	return (len);
 }
 
-int	ft_print_int(long n)
+int	ft_print_int_body(t_flags flags, long n)
 {
+	int	diff;
+	int	length;
+
+	length = 0;
+	diff = 0;
+	if (n >= 0)
+	{
+		if (flags.plus)
+			length += ft_put_char('+');
+		else if(flags.space)
+			length += ft_put_char(' ');
+	}
+	else
+	{
+		length += ft_put_char('-');
+		n *= -1;
+	}
+	if (ft_nbrlen(n) < flags.precision)
+	{
+		diff = flags.precision - ft_nbrlen(n);
+		while (diff-- > 0)
+			length += ft_put_char('0');
+	}
 	ft_putnbr(n);
-	return (ft_nbrlen(n));
+	length += ft_nbrlen(n);
+	return (length);
+}
+
+int	ft_print_int(t_flags flags, long n)
+{
+	int	length;
+
+	length = 0;
+	if (flags.left)
+		length =  ft_print_int_body(flags, n);
+	ft_padding(flags, n, ft_nbrlen);
+	
 }
 
 void	ft_putnbr(long n)
 {
 		if (n < 0)
 	{
-		ft_printchar('-');
+		ft_put_char('-');
 		n *= -1;
 	}
 	if (n >= 10)
@@ -51,7 +86,7 @@ void	ft_putnbr(long n)
 		ft_putnbr(n % 10);
 	}
 	else
-		ft_printchar(n + '0');
+		ft_put_char(n + '0');
 }
 
 /*int	ft_print_unsigned(unsigned int n)
