@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_flags.c ft_print_char.c ft_print_hex.c ft_print_int.c ft_print_ptr.c ft_print_str.c ft_print_unsigned.c ft_print_utils.c ft_printf.c 
+SRCS = ft_flags.c ft_print_char.c ft_print_hex.c ft_print_int.c ft_print_ptr.c ft_print_str.c ft_print_unsigned.c ft_printf_utils.c ft_printf.c 
 NAME = libftprintf.a
 CC = gcc
 AR = ar rcs
