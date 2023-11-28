@@ -85,6 +85,8 @@ int	ft_printstr(t_flags flags, char *str)
 {
 	int	length;
 
+	if (!str || !*str)
+		return (ft_putstr("(nil)"));
 	length = 0;
 	if (flags.width > (int)ft_strlen(str) && flags.width)
 	{
