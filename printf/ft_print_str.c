@@ -101,10 +101,7 @@ int	ft_printstr(t_flags flags, char *str)
 				length += ft_put_char(*str++);
 		}
 		else
-		{
-			while (*str)
-				length += ft_put_char((int)*str++);
-		}
+			length += ft_putstr(str);
 	}
 	return (length);
 }
