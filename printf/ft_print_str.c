@@ -37,7 +37,7 @@ int	ft_printstr_left(t_flags flags, char *str)
 		{
 			while (flags.precision-- > 0 && flags.width--)
 				ft_put_char((int) *str++);
-			ft_putchar(' ');
+			ft_put_char(' ');
 		}
 	}
 	else
@@ -58,7 +58,7 @@ int	ft_printstr_no_left(t_flags flags, char *str)
 	int	length;
 
 	length = flags.width;
-	if (flags.precision < ft_strlen(str))
+	if (flags.precision < (int)ft_strlen(str))
 	{
 		diff = flags.width - flags.precision;
 		while (flags.width--)
@@ -70,7 +70,7 @@ int	ft_printstr_no_left(t_flags flags, char *str)
 	}
 	else
 	{
-		diff == flags.width - ft_strlen(str);
+		diff = flags.width - ft_strlen(str);
 		while (flags.width--)
 		{
 			while (diff-- && flags.width--)
@@ -86,7 +86,7 @@ int	ft_printstr(t_flags flags, char *str)
 	int	length;
 
 	length = 0;
-	if (flags.width > ft_strlen(str))
+	if (flags.width > (int)ft_strlen(str))
 	{
 		if (flags.left)
 			length = ft_printstr_left(flags, str);
@@ -95,7 +95,7 @@ int	ft_printstr(t_flags flags, char *str)
 	}
 	else
 	{
-		if (flags.precision < ft_strlen(str))
+		if (flags.precision < (int)ft_strlen(str))
 		{
 			while (flags.precision--)
 				length += ft_put_char(*str++);
