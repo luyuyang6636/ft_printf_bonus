@@ -31,7 +31,7 @@ int	ft_printstr_left(t_flags flags, char *str)
 
 	length = flags.width;
 	lenstr = ft_strlen(str);
-	if (flags.precision < lenstr)
+	if (flags.precision < lenstr && flags.precision != 0)
 	{
 		while (flags.width-- > 0)
 		{
@@ -58,7 +58,7 @@ int	ft_printstr_no_left(t_flags flags, char *str)
 	int	length;
 
 	length = flags.width;
-	if (flags.precision < (int)ft_strlen(str))
+	if (flags.precision < (int)ft_strlen(str) && flags.precision != 0)
 	{
 		diff = flags.width - flags.precision;
 		while (flags.width-- > 0)
