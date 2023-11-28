@@ -112,6 +112,6 @@ int	ft_print_ptr(t_flags flags, unsigned long int ptr)
 			return (ft_putstr("(nil)"));
 		ft_putstr("0x");
 		ft_put_ptr(ptr);
-		return (length + 2);
+		return (length);
 	}
 }
