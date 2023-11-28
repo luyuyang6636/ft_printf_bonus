@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int ft_padding(t_flags flags, long n, int (*f)(void *))
+int ft_padding(t_flags flags, long n, int (*f)())
 {
     int count;
     int diff;
