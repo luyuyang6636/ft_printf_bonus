@@ -92,7 +92,6 @@ void	ft_put_ptr_no_left(t_flags flags, unsigned long int ptr, int length)
 int	ft_print_ptr(t_flags flags, unsigned long int ptr)
 {
 	int	length;
-	int	diff;
 
 	length = ft_ptrlen(ptr);
 	if (length != 0)
