@@ -18,7 +18,7 @@ int	ft_ptrlen(unsigned long int ptr)
 
 	len = 0;
 	if (!ptr)
-		return (len);
+		return (1);
 	while (ptr > 0)
 	{
 		len++;
