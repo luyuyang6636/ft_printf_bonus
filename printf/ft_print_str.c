@@ -46,7 +46,7 @@ int	ft_printstr_left(t_flags flags, char *str)
 		{
 			while (*str && flags.width--)
 				ft_put_char((int) *str++);
-			ft_putchar(' ');
+			ft_put_char(' ');
 		}
 	}
 	return (length);	
@@ -64,7 +64,7 @@ int	ft_printstr_no_left(t_flags flags, char *str)
 		while (flags.width--)
 		{
 			while (diff-- > 0 && flags.width--)
-				ft_putchar(' ');
+				ft_put_char(' ');
 			ft_put_char((int) *str++);
 		}
 	}
@@ -74,7 +74,7 @@ int	ft_printstr_no_left(t_flags flags, char *str)
 		while (flags.width--)
 		{
 			while (diff-- && flags.width--)
-				ft_putchar(' ');
+				ft_put_char(' ');
 			ft_put_char((int) *str++);
 		}
 	}
