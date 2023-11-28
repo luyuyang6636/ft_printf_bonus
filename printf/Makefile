@@ -28,6 +28,8 @@ $(NAME):	$(OBJS) $(LIBFT)
 			$(AR) $(NAME) $(OBJS)
 $(LIBFT):
 		make -C $(LIBFT_DIR)
+		
+bonus :	$(NAME)
 
 clean:
 		make -C $(LIBFT_DIR) clean

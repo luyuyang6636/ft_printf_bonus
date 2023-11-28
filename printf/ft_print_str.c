@@ -33,18 +33,18 @@ int	ft_printstr_left(t_flags flags, char *str)
 	lenstr = ft_strlen(str);
 	if (flags.precision < lenstr)
 	{
-		while (flags.width--)
+		while (flags.width-- > 0)
 		{
-			while (flags.precision-- > 0 && flags.width--)
+			while (flags.precision-- > 0 && flags.width-- > 0)
 				ft_put_char((int) *str++);
 			ft_put_char(' ');
 		}
 	}
 	else
 	{
-		while (flags.width--)
+		while (flags.width-- > 0)
 		{
-			while (*str && flags.width--)
+			while (*str && flags.width-- > 0)
 				ft_put_char((int) *str++);
 			ft_put_char(' ');
 		}
@@ -61,9 +61,9 @@ int	ft_printstr_no_left(t_flags flags, char *str)
 	if (flags.precision < (int)ft_strlen(str))
 	{
 		diff = flags.width - flags.precision;
-		while (flags.width--)
+		while (flags.width-- > 0)
 		{
-			while (diff-- > 0 && flags.width--)
+			while (diff-- > 0 && flags.width-- > 0)
 				ft_put_char(' ');
 			ft_put_char((int) *str++);
 		}
@@ -71,9 +71,9 @@ int	ft_printstr_no_left(t_flags flags, char *str)
 	else
 	{
 		diff = flags.width - ft_strlen(str);
-		while (flags.width--)
+		while (flags.width-- > 0)
 		{
-			while (diff-- && flags.width--)
+			while (diff-- > 0 && flags.width-- > 0)
 				ft_put_char(' ');
 			ft_put_char((int) *str++);
 		}
@@ -91,18 +91,18 @@ int	ft_printstr(t_flags flags, char *str)
 	if (!*str)
 		return (0);
 	length = 0;
-	if (flags.width > (int)ft_strlen(str) && flags.width)
+	if (flags.width > (int)ft_strlen(str) && flags.width != 0)
 	{
-		if (flags.left)
+		if (flags.left == 1)
 			length = ft_printstr_left(flags, str);
 		else
 			length = ft_printstr_no_left(flags, str);
 	}
 	else
 	{
-		if (flags.precision < (int)ft_strlen(str) && flags.precision)
+		if (flags.precision < (int)ft_strlen(str) && flags.precision != 0)
 		{
-			while (flags.precision--)
+			while (flags.precision-- > 0)
 				length += ft_put_char(*str++);
 		}
 		else
