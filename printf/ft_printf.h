@@ -53,7 +53,7 @@ void	ft_putnbr(long n);
 t_flags	ft_reset_flags(void);
 t_flags	ft_set_flags(t_flags flags, const char *format);
 int	ft_print_all(t_flags flags, va_list args);
-int ft_padding(t_flags flags, long n, int (*f)(void *));
+int ft_padding(t_flags flags, long n, int (*f)());
 int	ft_print_unsigned(t_flags flags, unsigned int n);
 
 #endif
