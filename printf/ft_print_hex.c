@@ -37,7 +37,7 @@ int	ft_print_hex_body(t_flags flags, unsigned int n, const char format)
 
 	length = 0;
 	diff = 0;
-	if (flags.hash)
+	if (flags.hash == 1)
 	{
 		length += ft_put_char('0');
 		length += ft_put_char(format);
