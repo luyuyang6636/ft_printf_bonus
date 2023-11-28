@@ -58,5 +58,6 @@ int	ft_print_all(t_flags flags, va_list args);
 int ft_padding(t_flags flags, long n, int (*f)());
 int	ft_print_unsigned(t_flags flags, unsigned int n);
 t_flags	ft_set_flags_wp(t_flags flags, const char *format);
+t_flags	ft_flags_check_error(t_flags flags);
 
 #endif

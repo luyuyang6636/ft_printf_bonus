@@ -34,6 +34,7 @@ int	ft_formats(va_list args, const char *format)
 				flags.type = *format;
 				format++;
 			}
+			flags = ft_flags_check_error(flags);
 			length += ft_print_all(flags, args);
 		}
 		else
