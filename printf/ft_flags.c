@@ -30,7 +30,7 @@ t_flags	ft_reset_flags(void)
 
 t_flags	ft_set_flags_wp(t_flags flags, const char *format)
 {
-	if (*format == '.' || (*format >= '1' && *format <='9'))
+	if (*format == '.' || (ft_isdigit(*format) == 1))
 	{
 		if (*format >= '1' && *format <='9')
 			flags.width = ft_atoi(format);
