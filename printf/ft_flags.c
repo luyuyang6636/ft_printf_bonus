@@ -48,7 +48,7 @@ t_flags	ft_set_flags(t_flags flags, const char *format)
 			flags.width = ft_atoi(format);
 		while (*format >= '0' && *format <= '9')
 			format++;
-		if (*format == '.')
+		if (*format++ == '.' && (*format > '0' && *format <= '9'))
 			flags.precision = ft_atoi(++format);
 		return (flags);
 	}

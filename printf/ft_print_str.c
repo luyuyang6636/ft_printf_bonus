@@ -87,7 +87,7 @@ int	ft_printstr(t_flags flags, char *str)
 
 
 	if (!str)
-		return (ft_putstr("(null)"));	
+		return (ft_printstr(flags, "(null)"));	
 	if (!*str)
 		return (0);
 	length = 0;
