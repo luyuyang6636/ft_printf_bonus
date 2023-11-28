@@ -22,17 +22,22 @@ void		ft_put_hex(unsigned int num, const char format)
 	else
 	{
 		if (num <= 9)
-			ft_printchar(num + '0');
+			ft_put_char(num + '0');
 		else if (format =='x')
-			ft_printchar(num - 10 + 'a');
+			ft_put_char(num - 10 + 'a');
 		else if (format == 'X')
-			ft_printchar(num - 10 + 'A');
+			ft_put_char(num - 10 + 'A');
 	}
 }
 
-int		ft_print_hex(unsigned int num, const char format)
+int	ft_print_hex_body(t_flags flags, unsigned int n)
+{
+	
+}
+
+int		ft_print_hex(t_flags flags, unsigned int num, const char format)
 {
 
 	ft_put_hex(num, format);
 	return (ft_ptrlen(num));
-}
+} 

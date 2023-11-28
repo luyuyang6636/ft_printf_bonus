@@ -52,14 +52,14 @@ int	ft_print_all(t_flags flags, va_list args)
 		return (ft_print_ptr(flags, (unsigned long int)va_arg(args, void *)));
 	if (flags.type == 'i' || flags.type == 'd')
 	{
-		return (ft_print_int((long)va_arg(args, int)));
+		return (ft_print_int(flags, (long)va_arg(args, int)));
 	}
 	if (flags.type == 'u')
 	{
-		return (ft_print_int((long)va_arg(args, unsigned int)));
+		return (ft_print_unsigned(flags, va_arg(args, unsigned int)));
 	}
 	if (flags.type == 'x' || flags.type == 'X')
-		return (ft_print_hex(va_arg(args, unsigned int), (const char) flags.type));
+		return (ft_print_hex(flags, va_arg(args, unsigned int), (const char) flags.type));
 	if (flags.type == '%')
 		return (ft_put_char('%'));
 	return (0);

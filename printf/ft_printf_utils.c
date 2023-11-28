@@ -16,10 +16,10 @@ int ft_padding(t_flags flags, long n, int (*f)(void *))
     }
     if (flags.precision > f(n))
         count += flags.precision;
-    diff = flags.precision - count;
-    while (count < flags.width)
+    diff = flags.width - count;
+    while (diff-- > 0)
     {
-        if (flags.zero && !flags.left)
+        if (flags.zero && !flags.left && !flags.precision)
             ft_put_char('0');
         else
             ft_put_char(' ');
