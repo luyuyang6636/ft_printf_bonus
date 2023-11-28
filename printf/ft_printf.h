@@ -44,7 +44,6 @@ void	ft_put_ptr_no_left(t_flags flags, unsigned long int ptr, int length);
 void    ft_put_ptr(unsigned long int ptr);
 int	ft_print_int(t_flags flags, long n);
 int	ft_print_int_body(t_flags flags, long n);
-/*void	ft_print_unsigned(unsigned int n);*/
 void	ft_put_hex(unsigned int num, const char format);
 int	ft_print_hex(t_flags flags, unsigned int num, const char format);
 int	ft_print_hex_body(t_flags flags, unsigned int n, const char format);

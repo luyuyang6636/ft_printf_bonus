@@ -30,7 +30,10 @@ int	ft_formats(va_list args, const char *format)
 			while (*format == '.' || (*format >= '0' && *format <='9'))
 				format++;
 			if (ft_strchr("cspdiuxX%", format))
+			{
 				flags.type = *format;
+				format++;
+			}
 			length += ft_print_all(flags, args);
 		}
 		else
@@ -39,7 +42,6 @@ int	ft_formats(va_list args, const char *format)
 		}
 	}
 	return (length);
-
 }
 
 int	ft_print_all(t_flags flags, va_list args)
