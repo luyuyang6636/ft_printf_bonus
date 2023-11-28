@@ -22,7 +22,27 @@ t_flags	ft_reset_flags(void)
 	flags.space = 0;
 	flags.width = 0;
 	flags.type = 0;
+	flags.dot = 0;
 	flags.precision = 0;
+	flags.error = 0;
+	return (flags);
+}
+
+t_flags	ft_set_flags_wp(t_flags flags, const char *format)
+{
+	if (*format == '.' || (*format >= '1' && *format <='9'))
+	{
+		if (*format >= '1' && *format <='9')
+			flags.width = ft_atoi(format);
+		while (*format >= '0' && *format <= '9')
+			format++;
+		if (*format++ == '.')
+		{
+			flags.dot = 1;
+			if (ft_isdigit(*format) == 1)
+				flags.precision = ft_atoi(format);
+		}
+	}
 	return (flags);
 }
 
@@ -42,15 +62,13 @@ t_flags	ft_set_flags(t_flags flags, const char *format)
 		flags.zero = 0;
 	if (flags.plus)
 		flags.space = 0;
-	else if (*format == '.' || (*format >= '1' && *format <='9'))
-	{
-		if (*format >= '1' && *format <='9')
-			flags.width = ft_atoi(format);
-		while (*format >= '0' && *format <= '9')
-			format++;
-		if (*format == '.' && ft_isdigit(*++format) == 1)
-			flags.precision = ft_atoi(format);
-		return (flags);
-	}
+	flags = ft_set_flags_wp(flags, format);
+	return (flags);
+}
+
+t_flags	ft_flags_check_error(t_flags flags)
+{
+	if (flags.dot == 1 && flags.precision == 0)
+		flags.error = 1;
 	return (flags);
 }

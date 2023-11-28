@@ -26,6 +26,8 @@ typedef struct s_flags
 	int	hash;
 	int	precision;
 	int	width;
+	int	dot;
+	int	error;
 	char	type;
 }				t_flags;
 
@@ -55,5 +57,6 @@ t_flags	ft_set_flags(t_flags flags, const char *format);
 int	ft_print_all(t_flags flags, va_list args);
 int ft_padding(t_flags flags, long n, int (*f)());
 int	ft_print_unsigned(t_flags flags, unsigned int n);
+t_flags	ft_set_flags_wp(t_flags flags, const char *format);
 
 #endif

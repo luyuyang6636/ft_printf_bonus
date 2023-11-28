@@ -46,6 +46,8 @@ int	ft_formats(va_list args, const char *format)
 
 int	ft_print_all(t_flags flags, va_list args)
 {
+	if (flags.error == 1)
+		return (0);
 	if (flags.type == 'c')
 		return(ft_printchar(flags, va_arg(args, int)));
 	if (flags.type == 's')
