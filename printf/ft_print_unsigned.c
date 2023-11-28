@@ -21,7 +21,7 @@ int	ft_print_unsigned(t_flags flags, unsigned int n)
 	flags.space = 0;
 	if (flags.left)
 		length += ft_print_int_body(flags, (long)n);
-	ft_padding(flags, n, ft_nbrlen);
+	length += ft_padding(flags, n, ft_nbrlen);
 	if (!flags.left)
 		length += ft_print_int_body(flags, (long)n);
 	return (length);

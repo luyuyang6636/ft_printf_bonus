@@ -24,5 +24,8 @@ int ft_padding(t_flags flags, long n, int (*f)(void *))
         else
             ft_put_char(' ');
     }
-    return (count);
+    if (flags.width - count > 0)
+        return (flags.width - count);
+    else
+        return (0);
 }

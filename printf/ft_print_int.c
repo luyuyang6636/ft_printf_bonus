@@ -69,7 +69,7 @@ int	ft_print_int(t_flags flags, long n)
 	length = 0;
 	if (flags.left)
 		length += ft_print_int_body(flags, n);
-	ft_padding(flags, n, ft_nbrlen);
+	length += ft_padding(flags, n, ft_nbrlen);
 	if (!flags.left)
 		length += ft_print_int_body(flags, n);
 	return (length);

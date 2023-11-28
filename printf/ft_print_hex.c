@@ -30,19 +30,38 @@ void		ft_put_hex(unsigned int num, const char format)
 	}
 }
 
-int	ft_print_hex_body(t_flags flags, unsigned int n)
+int	ft_print_hex_body(t_flags flags, unsigned int n, const char format)
 {
 	int	length;
 	int diff;
 
 	length = 0;
 	diff = 0;
-	
+	if (flags.hash)
+	{
+		length += ft_put_char('0');
+		length += ft_put_char(format);
+	}
+	if (ft_ptrlen((unsigned long)n) < flags.precision)
+	{
+		diff = flags.precision - ft_ptrlen((unsigned long)n);
+		while (diff-- > 0)
+			length += ft_put_char('0');
+	}
+	ft_put_hex(n, format);
+	length += ft_ptrlen(n);
+	return (length);
 }
 
 int		ft_print_hex(t_flags flags, unsigned int num, const char format)
 {
+	int	length;
 
-	ft_put_hex(num, format);
-	return (ft_ptrlen(num));
+	length = 0;
+	if (flags.left)
+		length += ft_print_hex_body(flags, num, format);
+	length += ft_padding(flags, num, ft_ptrlen);
+	if (!flags.left)
+		length += ft_print_hex_body(flags, num, format);
+	return (length);
 } 
