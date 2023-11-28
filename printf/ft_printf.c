@@ -18,7 +18,7 @@ int	ft_formats(va_list args, const char *format)
 	int	length;
 
 	length = 0;
-	while (format)
+	while (*format)
 	{
 		flags = ft_reset_flags();
 		if (*format == '%' && *++format)
