@@ -32,6 +32,11 @@ void		ft_put_hex(unsigned int num, const char format)
 
 int	ft_print_hex_body(t_flags flags, unsigned int n)
 {
+	int	length;
+	int diff;
+
+	length = 0;
+	diff = 0;
 	
 }
 
