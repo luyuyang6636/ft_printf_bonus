@@ -86,7 +86,7 @@ int	ft_printstr(t_flags flags, char *str)
 	int	length;
 
 	length = 0;
-	if (flags.width > (int)ft_strlen(str))
+	if (flags.width > (int)ft_strlen(str) && flags.width)
 	{
 		if (flags.left)
 			length = ft_printstr_left(flags, str);
@@ -95,7 +95,7 @@ int	ft_printstr(t_flags flags, char *str)
 	}
 	else
 	{
-		if (flags.precision < (int)ft_strlen(str))
+		if (flags.precision < (int)ft_strlen(str) && flags.precision)
 		{
 			while (flags.precision--)
 				length += ft_put_char(*str++);
