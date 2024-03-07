@@ -38,5 +38,5 @@ fclean:		clean
 		make -C $(LIBFT_DIR) fclean
 		$(RM) $(NAME)
 re:		fclean all
-.PHONY:		all clean fclean re libft
+.PHONY:		all clean fclean re libft bonus
 

@@ -34,16 +34,14 @@ int	ft_nbrlen(long n)
 
 int	ft_print_int_body(t_flags flags, long n)
 {
-	int	diff;
 	int	length;
 
 	length = 0;
-	diff = 0;
 	if (n >= 0)
 	{
 		if (flags.plus)
 			length += ft_put_char('+');
-		else if(flags.space)
+		else if (flags.space)
 			length += ft_put_char(' ');
 	}
 	else
@@ -53,8 +51,7 @@ int	ft_print_int_body(t_flags flags, long n)
 	}
 	if (ft_nbrlen(n) < flags.precision)
 	{
-		diff = flags.precision - ft_nbrlen(n);
-		while (diff-- > 0)
+		while (flags.precision-- - ft_nbrlen(n) > 0)
 			length += ft_put_char('0');
 	}
 	ft_putnbr(n);
@@ -67,17 +64,27 @@ int	ft_print_int(t_flags flags, long n)
 	int	length;
 
 	length = 0;
-	if (flags.left)
-		length += ft_print_int_body(flags, n);
-	length += ft_padding(flags, n, ft_nbrlen);
-	if (!flags.left)
-		length += ft_print_int_body(flags, n);
+	if (!(flags.error && n == 0))
+	{
+		if (flags.zero && flags.width && n < 0)
+		{
+			flags.zero = 0;
+			flags.precision = flags.width - 1;
+		}
+		if (flags.left)
+			length += ft_print_int_body(flags, n);
+		length += ft_padding(flags, n, ft_nbrlen);
+		if (!flags.left)
+			length += ft_print_int_body(flags, n);
+	}
+	else
+		length += ft_padding(flags, n, ft_nbrlen);
 	return (length);
 }
 
 void	ft_putnbr(long n)
 {
-		if (n < 0)
+	if (n < 0)
 	{
 		ft_put_char('-');
 		n *= -1;

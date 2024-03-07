@@ -15,7 +15,7 @@
 int	ft_formats(va_list args, const char *format)
 {
 	t_flags	flags;
-	int	length;
+	int		length;
 
 	length = 0;
 	while (*format)
@@ -23,18 +23,12 @@ int	ft_formats(va_list args, const char *format)
 		flags = ft_reset_flags();
 		if (*format == '%' && *++format)
 		{
-			while (ft_strchr("+-0# ", format))
-				flags = ft_set_flags(flags, format++);
-			if (*format == '.' || (*format >= '1' && *format <='9'))
-				flags = ft_set_flags(flags, format);
-			while (*format == '.' || (*format >= '0' && *format <='9'))
+			flags = ft_set_format(flags, format);
+			while (ft_strchr("+-0#. ", format)
+				||ft_isdigit(*format))
 				format++;
 			if (ft_strchr("cspdiuxX%", format))
-			{
-				flags.type = *format;
 				format++;
-			}
-			flags = ft_flags_check_error(flags);
 			length += ft_print_all(flags, args);
 		}
 		else
@@ -47,10 +41,8 @@ int	ft_formats(va_list args, const char *format)
 
 int	ft_print_all(t_flags flags, va_list args)
 {
-	if (flags.error == 1)
-		return (0);
 	if (flags.type == 'c')
-		return(ft_printchar(flags, va_arg(args, int)));
+		return (ft_printchar(flags, va_arg(args, int)));
 	if (flags.type == 's')
 		return (ft_printstr(flags, va_arg(args, char *)));
 	if (flags.type == 'p')
@@ -64,15 +56,17 @@ int	ft_print_all(t_flags flags, va_list args)
 		return (ft_print_unsigned(flags, va_arg(args, unsigned int)));
 	}
 	if (flags.type == 'x' || flags.type == 'X')
-		return (ft_print_hex(flags, va_arg(args, unsigned int), (const char) flags.type));
+		return (ft_print_hex(flags, va_arg(args, unsigned int),
+				(const char)flags.type));
 	if (flags.type == '%')
 		return (ft_put_char('%'));
 	return (0);
 }
+
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	int	length;
+	int		length;
 
 	if (!format || !*format)
 		return (0);

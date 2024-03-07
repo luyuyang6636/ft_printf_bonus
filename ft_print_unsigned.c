@@ -19,10 +19,15 @@ int	ft_print_unsigned(t_flags flags, unsigned int n)
 	length = 0;
 	flags.plus = 0;
 	flags.space = 0;
-	if (flags.left)
-		length += ft_print_int_body(flags, (long)n);
-	length += ft_padding(flags, n, ft_nbrlen);
-	if (!flags.left)
-		length += ft_print_int_body(flags, (long)n);
+	if (!(flags.error && n == 0))
+	{
+		if (flags.left)
+			length += ft_print_int_body(flags, (long)n);
+		length += ft_padding(flags, n, ft_nbrlen);
+		if (!flags.left)
+			length += ft_print_int_body(flags, (long)n);
+	}
+	else
+		length += ft_padding(flags, n, ft_nbrlen);
 	return (length);
 }

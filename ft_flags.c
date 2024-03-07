@@ -24,6 +24,7 @@ t_flags	ft_reset_flags(void)
 	flags.type = 0;
 	flags.dot = 0;
 	flags.precision = 0;
+	flags.hash = 0;
 	flags.error = 0;
 	return (flags);
 }
@@ -32,7 +33,7 @@ t_flags	ft_set_flags_wp(t_flags flags, const char *format)
 {
 	if (*format == '.' || (ft_isdigit(*format) == 1))
 	{
-		if (*format >= '1' && *format <='9')
+		if (*format >= '1' && *format <= '9')
 			flags.width = ft_atoi(format);
 		while (*format >= '0' && *format <= '9')
 			format++;
@@ -45,6 +46,23 @@ t_flags	ft_set_flags_wp(t_flags flags, const char *format)
 	}
 	return (flags);
 }
+
+t_flags	ft_set_format(t_flags flags, const char *format)
+{
+	while (ft_strchr("+-0# ", format))
+		flags = ft_set_flags(flags, format++);
+	if (*format == '.' || (*format >= '1' && *format <= '9'))
+		flags = ft_set_flags(flags, format);
+	while (*format == '.' || (*format >= '0' && *format <= '9'))
+		format++;
+	if (ft_strchr("cspdiuxX%", format))
+	{
+		flags.type = *format;
+		format++;
+	}
+	flags = ft_flags_check_error(flags);
+	return (flags);
+}	
 
 t_flags	ft_set_flags(t_flags flags, const char *format)
 {
@@ -68,7 +86,10 @@ t_flags	ft_set_flags(t_flags flags, const char *format)
 
 t_flags	ft_flags_check_error(t_flags flags)
 {
-	if (flags.dot == 1 && flags.precision == 0)
+	if (flags.dot == 1 && flags.precision == 0
+		&& ft_strchr("iduxX", &flags.type))
 		flags.error = 1;
+	if (flags.zero && flags.dot)
+		flags.zero = 0;
 	return (flags);
 }

@@ -18,7 +18,7 @@ int	ft_ptrlen(unsigned long int ptr)
 
 	len = 0;
 	if (!ptr)
-		return (1);
+		return (0);
 	while (ptr > 0)
 	{
 		len++;
@@ -52,7 +52,7 @@ void	ft_put_ptr_left(t_flags flags, unsigned long int ptr, int length)
 	{
 		flags.width -= 5;
 		ft_putstr("(nil)");
-		while (flags.width--)
+		while (flags.width-- > 0)
 		{
 			ft_put_char(' ');
 		}
@@ -61,7 +61,7 @@ void	ft_put_ptr_left(t_flags flags, unsigned long int ptr, int length)
 	{
 		ft_putstr("0x");
 		ft_put_ptr(ptr);
-		while (diff--)
+		while (diff-- > 0)
 			ft_put_char(' ');
 	}
 }
@@ -74,7 +74,7 @@ void	ft_put_ptr_no_left(t_flags flags, unsigned long int ptr, int length)
 	if (!ptr)
 	{
 		flags.width -= 5;
-		while (flags.width--)
+		while (flags.width-- > 0)
 		{
 			ft_put_char(' ');
 		}
